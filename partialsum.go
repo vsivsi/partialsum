@@ -1,7 +1,7 @@
 package partialsum
 
 import (
-	"github.com/hillbig/rsdic"
+	"github.com/vsivsi/rsdic"
 	"github.com/ugorji/go/codec"
 )
 
