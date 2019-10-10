@@ -47,7 +47,7 @@ func New() PartialSum {
 }
 
 type partialSumImpl struct {
-	dic rsdic.RSDic
+	dic *rsdic.RSDic
 }
 
 func (ps *partialSumImpl) IncTail(ind uint64, val uint64) {
