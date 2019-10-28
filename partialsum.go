@@ -1,7 +1,6 @@
 package partialsum
 
 import (
-	"github.com/ugorji/go/codec"
 	"github.com/vsivsi/rsdic"
 )
 
@@ -53,9 +52,7 @@ type PartialSum struct {
 
 // New returns a new partial sum data struct
 func New() PartialSum {
-	return PartialSum{
-		dic: rsdic.New(),
-	}
+	return PartialSum{dic: rsdic.New()}
 }
 
 // IncTail adds: V[ind] += val
@@ -107,24 +104,24 @@ func (ps PartialSum) Find(val uint64) (ind uint64, offset uint64) {
 	return
 }
 
-// MarshalBinary encodes VecString into a binary form and returns the result.
-func (ps PartialSum) MarshalBinary() (out []byte, err error) {
-	var mh codec.MsgpackHandle
-	enc := codec.NewEncoderBytes(&out, &mh)
-	err = enc.Encode(ps.dic)
-	if err != nil {
-		return
-	}
-	return
-}
+// // MarshalBinary encodes VecString into a binary form and returns the result.
+// func (ps PartialSum) MarshalBinary() (out []byte, err error) {
+// 	var mh codec.MsgpackHandle
+// 	enc := codec.NewEncoderBytes(&out, &mh)
+// 	err = enc.Encode(ps.dic)
+// 	if err != nil {
+// 		return
+// 	}
+// 	return
+// }
 
-// UnmarshalBinary decodes the FixVec form a binary from generated MarshalBinary
-func (ps *PartialSum) UnmarshalBinary(in []byte) (err error) {
-	var mh codec.MsgpackHandle
-	dec := codec.NewDecoderBytes(in, &mh)
-	err = dec.Decode(&ps.dic)
-	if err != nil {
-		return
-	}
-	return
-}
+// // UnmarshalBinary decodes the FixVec form a binary from generated MarshalBinary
+// func (ps *PartialSum) UnmarshalBinary(in []byte) (err error) {
+// 	var mh codec.MsgpackHandle
+// 	dec := codec.NewDecoderBytes(in, &mh)
+// 	err = dec.Decode(&ps.dic)
+// 	if err != nil {
+// 		return
+// 	}
+// 	return
+// }
